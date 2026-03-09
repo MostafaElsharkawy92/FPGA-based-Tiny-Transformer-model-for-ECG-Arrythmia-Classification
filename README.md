@@ -720,9 +720,7 @@ This project is licensed under the MIT License. See `LICENSE` file for details.
 ## Contact
 
 For questions or collaboration opportunities:
-- **Mostafa Elsharkawy** - Nano-Electronics Engineering and Design, SUTD
-- **Dr. Tee Hui Teo** - tthui@sutd.edu.sg
-
+- **Mostafa Elsharkawy** - mostafaosama123.mo@gmail.com
 ---
 
 ## Project Status
