@@ -17,11 +17,11 @@ This repository contains the complete implementation of **FPGA-based Tiny Transf
 - **Resources**: Balanced utilization (30% LUTs, 37% BRAM, 27% DSP, 20% FFs)
 - **Dataset**: MIT-BIH Arrhythmia Database with AAMI EC57 standard classification
 
-### Innovation: Dynamic Adaptive Attention
+### Contribution: Dynamic Adaptive Attention
 
 Unlike traditional multi-head attention that processes all heads equally, this work introduces a **novel learnable gating mechanism** that adaptively selects attention heads based on input characteristics.
 
-#### Key Innovation: DynamicHeadGate Layer
+#### DynamicHeadGate Layer
 
 **Problem Addressed**: Traditional multi-head attention treats all heads equally, leading to:
 - Redundant computations (not all heads are useful for every input)
@@ -70,10 +70,8 @@ Where `g_i ∈ (0,1)` controls the contribution of head `i`.
 
 #### Research Impact
 
-- **Novel Contribution**: First dynamic attention mechanism for ECG transformers on FPGA
 - **Efficiency-Accuracy Trade-off**: Achieves 96.91% accuracy with 54.52% computation reduction
 - **Hardware-Algorithm Co-design**: Identifies optimization opportunities for FPGA implementation
-- **Explainable AI**: Provides interpretability critical for medical applications
 
 ### Research Context
 
