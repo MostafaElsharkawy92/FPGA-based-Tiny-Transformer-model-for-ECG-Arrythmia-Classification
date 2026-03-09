@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository contains the complete implementation of **FPGA-based Tiny Transformer with Dynamic Adaptive Attention for ECG Arrhythmia Detection**, demonstrating the deployment of a novel lightweight transformer architecture on the Xilinx Kria KV260 FPGA using Vitis High-Level Synthesis (HLS). This work was presented at **IEEE MCSoC 2025**.
+This repository contains the complete implementation of **FPGA-based Tiny Transformer with Dynamic Adaptive Attention for ECG Arrhythmia Detection**, demonstrating the deployment of a lightweight transformer architecture on the Xilinx Kria KV260 FPGA using Vitis High-Level Synthesis (HLS). This work was presented at **IEEE MCSoC 2025**.
 
 ### Key Achievements
 
@@ -19,7 +19,7 @@ This repository contains the complete implementation of **FPGA-based Tiny Transf
 
 ### Contribution: Dynamic Adaptive Attention
 
-Unlike traditional multi-head attention that processes all heads equally, this work introduces a **novel learnable gating mechanism** that adaptively selects attention heads based on input characteristics.
+Unlike traditional multi-head attention that processes all heads equally, this work introduces a ** learnable gating mechanism** that adaptively selects attention heads based on input characteristics.
 
 #### DynamicHeadGate Layer
 
@@ -101,7 +101,7 @@ FPGA-based-Tiny-Transformer-model-for-ECG-Arrythmia-Classification/
 │
 ├── software/
 │   ├── Baseline Tiny Transformer (Software).ipynb    # Baseline model (reference)
-│   ├── Dynamic Transformer.ipynb                      # Novel dynamic adaptive attention
+│   ├── Dynamic Transformer.ipynb                      # Dynamic adaptive attention
 │   └── README.md                                      # Software verification guide
 │
 ├── hardware-hls/
@@ -206,7 +206,7 @@ jupyter notebook "Baseline Tiny Transformer (Software).ipynb"
 
 **Notebook:** `Dynamic Transformer.ipynb`
 
-This notebook implements the **novel dynamic adaptive attention mechanism** - the primary contribution of this work.
+This notebook implements the **dynamic adaptive attention mechanism** - the primary contribution of this work.
 
 **Key Innovation**:
 - **`DynamicHeadGate` Layer**: Learnable gating mechanism that scores each attention head
