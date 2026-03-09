@@ -10,7 +10,7 @@ This repository contains the complete implementation of **FPGA-based Tiny Transf
 
 ### Key Achievements
 
-- **Novel Contribution**: Dynamic adaptive attention mechanism with learnable head gating
+- **Contribution**: Dynamic adaptive attention mechanism with learnable head gating
 - **Model**: Tiny Transformer with 6,643 parameters (baseline) / 7,895 parameters (dynamic)
 - **Accuracy**: 98.83% (baseline) / 96.91% (dynamic with 54.52% efficiency gain)
 - **Latency**: 56.62 ms @ 76.9 MHz on FPGA
