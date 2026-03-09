@@ -227,7 +227,7 @@ jupyter notebook "Baseline Tiny Transformer (Software).ipynb"
 **Workflow**:
 1. Run all cells in sequence
 2. Model will download MIT-BIH dataset (~100MB)
-3. Training takes ~30-60 minutes on GPU
+3. Training takes 10-20 minutes on GPU
 4. Evaluate on test set and generate reports
 
 ### Model Configuration
