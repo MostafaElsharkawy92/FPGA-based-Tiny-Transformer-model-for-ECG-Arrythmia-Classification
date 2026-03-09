@@ -618,50 +618,25 @@ wait_on_run impl_1
 
 Based on the analysis in the paper and dynamic attention mechanism, the following optimizations are recommended:
 
-### 1. **Dynamic Attention Hardware Integration** ⭐ **Priority**
-- Implement DynamicHeadGate in HLS
-- Conditional head execution (if gate > threshold, compute)
-- Advantages:
-  - 54.52% computation reduction through selective head activation (3.64/8 heads average)
-  - 30-40% power savings (inactive heads power-gated)
-  - Achieves 96.91% accuracy with 1.83× speedup
-- Challenges:
-  - Branch divergence in FPGA (conditional execution overhead)
-  - Gate computation latency
-  - Dynamic resource allocation
-
-**Implementation Strategy**:
-```cpp
-// Parallel dynamic heads with conditional execution
-DYNAMIC_HEADS: for (int h = 0; h < NUM_HEADS; h++) {
-    #pragma HLS DATAFLOW
-    if (gate_scores[h] > GATE_THRESHOLD) {
-        compute_attention_head(h, Q, K, V, head_out[h]);
-    } else {
-        skip_head(h);  // Power-gated, zero latency
-    }
-}
-```
-
-### 2. **Parallel Attention Head Processing**
+### 1. **Parallel Attention Head Processing**
 - Currently, 8 heads processed sequentially
 - Implement dataflow parallelism with dynamic gating
 - **Expected improvement**: ~5× speedup (8× theoretical, but dynamic gating adds overhead)
 - **Target latency**: 23.5ms → ~4.7ms for attention
 
-### 3. **Memory Access Optimization**
+### 2. **Memory Access Optimization**
 - Use `#pragma HLS ARRAY_PARTITION` for Q, K, V matrices
 - Optimize buffer sizes for variable active heads
 - Implement head-specific memory banks
 - **Expected improvement**: Reduce 36,261 FFN iterations by 40%
 
-### 4. **Enhanced Pipelining with Dynamic Control**
+### 3. **Enhanced Pipelining with Dynamic Control**
 - Apply `#pragma HLS PIPELINE` to gate computation
 - Enable dataflow between dynamic layers
 - Early exit for high-confidence predictions
 - **Target**: Reduce overall latency by 5-8×
 
-### 5. **Quantization-Aware Training**
+### 4. **Quantization-Aware Training**
 - INT8 attention computations
 - INT4 gate scores (sufficient for 8 heads)
 - Mixed precision: FP16 for critical paths, INT8 for bulk
@@ -671,12 +646,12 @@ DYNAMIC_HEADS: for (int h = 0; h < NUM_HEADS; h++) {
   - 50% memory bandwidth reduction
   - Target accuracy: >96% with dynamic gating, >98% baseline
 
-### 6. **Layer Fusion + Dynamic Gating**
+### 5. **Layer Fusion + Dynamic Gating**
 - Fuse LayerNorm → DynamicGate → Attention
 - Single-pass computation reduces memory traffic
 - **Expected improvement**: 15-25% latency reduction
 
-### 7. **Adaptive Precision per Head**
+### 6. **Adaptive Precision per Head**
 - High-priority heads (frequently activated): FP16
 - Low-priority heads (rarely activated): INT8
 - Gate network determines precision dynamically
@@ -689,17 +664,17 @@ DYNAMIC_HEADS: for (int h = 0; h < NUM_HEADS; h++) {
 - Resource characterization
 - Bottleneck identification
 
-**Phase 2: Parallel + Dynamic Attention** (Next)
+**Phase 2: Parallel + Dynamic Attention**
 - Parallel head processing: 23.5ms → 4.7ms
 - Dynamic gating integration: 4.7ms → 3.1ms
 - **Target**: ~40ms total latency
 
-**Phase 3: Quantization + Memory Opt** (Future)
+**Phase 3: Quantization + Memory Opt**
 - INT8 quantization: 40ms → 15ms
 - Memory optimization: 15ms → 10ms
 - **Target**: ~10ms total latency (5.6× speedup)
 
-**Phase 4: Advanced Optimizations** (Research)
+**Phase 4: Advanced Optimizations** (Potential Research)
 - Adaptive precision
 - Early exit mechanism
 - Hardware-aware NAS
@@ -758,7 +733,6 @@ For questions or collaboration opportunities:
 - [x] FPGA synthesis and implementation
 - [x] PYNQ deployment framework
 - [ ] Performance optimization (future work)
-- [ ] ASIC tape-out using open-source PDK (planned)
 
 ---
 
